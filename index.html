@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Locations</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map', { attributionControl: false }).setView([20.0, 0.0], 2); // Centered globally
+
+        // Add the OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attributionControl: false
+        }).addTo(map);
+
+        // Optionally add custom attribution
+        L.control.attribution({ position: 'bottomright', prefix: false })
+         .addAttribution('Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>')
+         .addTo(map);
+
+        // Add markers for partner locations
+        var locations = [
+            { lat: 49.2536, lng: 8.8835, name: "GROB Antriebstechnik GmbH, Sinsheim, Germany" },
+            { lat: 51.5149, lng: 7.4653, name: "Antriebs- und Systemtechnik GmbH, Dortmund, Germany" },
+            { lat: 54.1353, lng: 10.6178, name: "Heinrich Wolf GmbH & Co. KG, Eutin, Germany" },
+            { lat: -31.9774, lng: 116.0577, name: "Mechanical Components Pty Ltd, Kalamunda, Australia" },
+            { lat: 55.6312, lng: 12.0789, name: "Regal A/S, Roskilde, Denmark" },
+            { lat: 37.541, lng: 126.986, name: "Signix Corp., Incheon, South Korea" },
+            { lat: 51.109745, lng: 16.901582, name: "Demero, Poland" },
+            { lat: 50.011989, lng: 36.220920, name: "Cominpro, Ukraine" },
+            { lat: 33.974569, lng: -84.099491, name: "Framo Morat Inc., USA" },
+            { lat: 32.085974, lng: 34.858449, name: "Medital Ltd, Israel" },
+            { lat: 48.736750, lng: 9.164841, name: "MÄDLER GmbH, Germany" },
+            { lat: 51.177324, lng: 6.867071, name: "MÄDLER Subsidiary Düsseldorf, Germany" },
+            { lat: 53.622650, lng: 10.227803, name: "MÄDLER Subsidiary Hamburg, Germany" },
+            { lat: 49.812919, lng: 9.979125, name: "Max Lamb GmbH & Co. KG, Germany" },
+            { lat: 53.174653, lng: 8.635150, name: "Hausmann + Haensgen GmbH & Co. KG, Germany" },
+            { lat: 48.198032, lng: 16.343918, name: "MÄDLER Österreich GmbH, Austria" },
+            { lat: 29.341529, lng: 120.108814, name: "Zhuji Grob Electromechanical Co., Ltd, China" },
+            { lat: 60.283462, lng: 24.814452, name: "EIE Maskin Oy, Finland" },
+            { lat: 48.626864, lng: 1.816077, name: "Cetic, France" },
+            { lat: 47.780938, lng: 7.229799, name: "Kübler Group, France" },
+            { lat: 52.036752, lng: -0.335565, name: "Drive Lines Technologies Ltd., UK" },
+            { lat: 52.036621, lng: -0.335709, name: "R A Rodriguez, UK" },
+            { lat: 28.492611, lng: 77.143285, name: "Plaksa Group, India" },
+            { lat: 45.504928, lng: 9.241271, name: "RISAM Srl, Italy" },
+            { lat: 52.031715, lng: 4.651370, name: "AXIS & Stuifmeel B.V., Netherlands" },
+            { lat: -36.945279, lng: 174.798376, name: "SAECOWilson, New Zealand" },
+            { lat: 59.915553, lng: 10.846912, name: "EIE Maskin AS, Norway" },
+            { lat: 37.525820, lng: 126.776536, name: "Alphatec, South Korea" },
+            { lat: 59.262419, lng: 18.040550, name: "EIE Maskin AB, Sweden" },
+            { lat: 47.691416, lng: 8.643337, name: "Mädler Norm Antrieb AG, Switzerland" },
+            { lat: 40.211447, lng: 28.932350, name: "Framo Morat, Turkey" },
+            { lat: 38.315134, lng: 27.169096, name: "GENERAL Redüktör, Turkey" }
+        ];
+
+        // Add each location to the map
+        locations.forEach(function(location) {
+            L.marker([location.lat, location.lng])
+                .addTo(map)
+                .bindPopup(location.name);
+        });
+    </script>
+</body>
+</html>
